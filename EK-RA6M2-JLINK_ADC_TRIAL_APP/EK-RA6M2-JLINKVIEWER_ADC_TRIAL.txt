@@ -17,13 +17,13 @@
 |  |              |                          LED INFORMATION : PIN          --> P302                                             |
 |  |       P302   |------------------+                         COLOR        --> BLUE                                             |
 |  |              |                 _|_      POT INFORMATION : OHM          --> 22k                                              |
-|  +--------------+                 \ /                                         								   |
+|  +--------------+                 \ /                                                                                          |
 |                                    |                  NOTE : REGISTER ADRESS FOR JLINK "0x1ffe003c".                           | 
 |                                    +                         DON'T FORGET CLICK THE INPUT> CHANNELSACN...>CHANNELn IN ADC PRO- |
 |                                  __|__                       PERTIES.                                                          |
 |                                   ___                                                                                          |
-|                                    _ 															   |
-|  																					   |
+|                                    _                                                                                           |
+|                                                                                                                                |
 |                                                                                                                                |
 |                                                                                                                                |
 |                                                                                                                                |
