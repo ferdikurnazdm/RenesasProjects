@@ -1,0 +1,36 @@
++-----------------------------------------------------------------------------------------------+
+|                                     FREERTOS_DENEME_001                                       |
++-----------------------------------------------------------------------------------------------+
+| PROJECT INFORMATION :                                                                         |
+|                                                                                               |
+| PROJECT NAME        : FREERTOS_DENEME_001                                                     |
+| CREATED BY          : FERDI KURNAZ                                                            |
+| DATE                : 08.03.2023                                                              |
+| BOARD               : EK-RA6M2                                                                |
+| IDE                 : e2 STUDIO                                                               |
+|-----------------------------------------------------------------------------------------------|
+| DESCRIPTION         :                                                                         |
+|                                                                                               |
+| THE FIRSTLY OUR PURPOSE IS USE THE FREE RTOS IN THIS PROJECT. THE SCENARIO OF THIS PROJECT IS |
+| RED LED IS GOING TO BLINK IN EVERYTIME AND BLUE LED IS GOING TO BLINK ONLY WHEN PRESSED THE   |
+| USERS BUTTON. THUS TWO DIFFRENT APPLICATION IS GOING TO WORK AS PARALLEL.                     |
++-----------------------------------------------------------------------------------------------+
+
++----------------------------------------------+------------------------------------------------+
+| CIRCUIT :                                    | PIN DESCRIPTION :                              |
+|                                              |                                                |
+| +---------------+                            | P312 --> OUTPUT INITIAL LOW CONNECTED TO "B"   | 
+| |               |                            | P311 --> OUTPUT INITIAL LOW CONNECTED TO "R"   |
+| |         P312  |------------------+         | R    --> RED LED                               |
+| |               |                  |         | B    --> BLUED LED                             |
+| |         P311  |----------+       |         |                                                |
+| |               |          |       |         |                                                |
+| |               |         _|_     _|_        |                                                |
+| |               |         \ / R   \ / B      |                                                |
+| |               |          |_______|         |                                                |
+| |               |              |             |                                                |
+| |      MCU      |             ---            |                                                |
+| |               |              -             |                                                |
+| +---------------+                            |                                                |
+|                                              |                                                |
++----------------------------------------------+------------------------------------------------+

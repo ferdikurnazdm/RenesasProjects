@@ -1,33 +1,44 @@
-+--------------------------------------------------------------------------------------------------------------------------------+
-|                                                         JLINK_ADC                                                              |
-+--------------------------------------------------------------------------------------------------------------------------------+
-| * DESCRIPTION : adc'den okunan analog değeri integer değere dönüştürüp jlınk viewer'da yazdırma.                               |
-|                                                                                                                                |
-|================================================================================================================================|
-|                                                                                                                                |
-|  +--------------+                             PROJECT NAME : JLINK_ADC                                                         |
-|  |        VCC   |---------------+                    CODER : FERDI KURNAZ                                                      |
-|  |              |             __|__                    IDE : e2 STUDIO                                                         |
-|  |       P500   |<-------+   |     |           DESCRIPTION : THIS PROJECT GOING TO DO THAT MCU IS GOING TO READ THE ANALOG VA- |
-|  |              |        |___|     |                         VALUE FRON ADC AND IF THIS VALUE BIGGER THAN 2048 THEN OPEN THE   |
-|  |        GND   |            |     |                         LED. ALSO THAT OF SHOW US THE ANALOG VALUE ON JLINK RTT VIEWER.   |
-|  |              |            |_____|       ADC INFORMATION : PIN          --> P502                                             |
-|  |              |               |                            CHANNEL      --> 0                                                |
-|  |              |---------------+                            ANALOG PIN   --> AN17                                             |
-|  |              |                          LED INFORMATION : PIN          --> P302                                             |
-|  |       P302   |------------------+                         COLOR        --> BLUE                                             |
-|  |              |                 _|_      POT INFORMATION : OHM          --> 22k                                              |
-|  +--------------+                 \ /                                                                                          |
-|                                    |                  NOTE : REGISTER ADRESS FOR JLINK "0x1ffe003c".                           | 
-|                                    +                         DON'T FORGET CLICK THE INPUT> CHANNELSACN...>CHANNELn IN ADC PRO- |
-|                                  __|__                       PERTIES.                                                          |
-|                                   ___                                                                                          |
-|                                    _                                                                                           |
-|                                                                                                                                |
-|                                                                                                                                |
-|                                                                                                                                |
-|                                                                                                                                |
-|                                                                                                                                |
-|                                                                                                                                |
-|                                                                                                                                |
-+--------------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------+
+|                                       JLINK_ADC                                          |
++------------------------------------------------------------------------------------------+
+| PROJECT INFORMATION :                                                                    |
+|                                                                                          |
+| PROJECT NAME        : JLINK_ADC                                                          |
+| CREATED BY          : FERDI KURNAZ                                                       |
+| DATE                : 15.03.2023                                                         |
+| BOARD               : EK-RA6M2                                                           |
+| IDE                 : e2 STUDIO                                                          |
+|------------------------------------------------------------------------------------------|
+| DESCRIPTION         :                                                                    |
+|                                                                                          |
+| THIS PROJECT GOING TO DO THAT MCU IS GOING TO READ THE ANALOG VALUE FRON ADC AND IF      |
+| THIS VALUE BIGGER THAN 2048 THEN OPEN THE LED. ALSO THAT OF SHOW US THE ANALOG           |
+| VALUE ON JLINK RTT VIEWER.                                                               |
+|                                                                                          |
+| NOTE                : REGISTER ADRESS FOR JLINK "0x1ffe003c".                            |
+| DON'T FORGET CLICK THE INPUT> CHANNELSACN...>CHANNELn IN ADC PROPERTIES.                 |
++------------------------------------------------------------------------------------------+
+
++-------------------------------------------+----------------------------------------------+
+| CIRCUIT :                                 | PIN DESCRIPTION :                            |
+|  +--------------+                         |                                              |
+|  |        VCC   |---------------+         | P502             --> ANALOG INPUT            |
+|  |              |             __|__P      | P312             --> OUTPUT INITIAL LOW      |
+|  |       P500   |<-------+   |     |      |                  CONNECTED TO "B".           |
+|  |              |        |___|     |      | ADC INFORMATION :                            |
+|  |        GND   |            |     |      |                                              |
+|  |              |            |_____|      | MODULE NAME      --> 0                       |
+|  |              |               |         | ANALOG CHANNEL   --> AN17                    |
+|  |              |---------------+         |                                              |
+|  |              |                         | LED INFORMATION :                            |
+|  |       P312   |------------------+      |     COLOR        --> BLUE                    |
+|  |     MCU      |                 _|_     |                                              |
+|  +--------------+                 \ / B   | POT INFORMATION :                            |
+|                                    |      |     OHM          --> 22k                     | 
+|                                    +      |                                              |
+|                                  __|__    |                                              |
+|                                   ___     |                                              |
+|                                    _      |                                              |
+|                                           |                                              |
+|                                           |                                              |
++-------------------------------------------+----------------------------------------------+

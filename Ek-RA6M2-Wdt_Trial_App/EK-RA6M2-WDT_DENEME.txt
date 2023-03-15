@@ -1,0 +1,39 @@
++-----------------------------------------------------------------------------------------+
+|                                     WDT_DENEME                                          |
++-----------------------------------------------------------------------------------------+
+| PROJECT INFORMATION :                                                                   |
+|                                                                                         |
+| PROJECT NAME        : WDT_DENEME                                                        |
+| CREATED BY          : FERDI KURNAZ                                                      |
+| DATE                : 10.03.2023                                                        |
+| BOARD               : RENEAS EK-RA6M2                                                   |
+| IDE                 : e2 STUDIO                                                         |
+|-----------------------------------------------------------------------------------------|
+| DESCRIPTION         :                                                                   |
+|                                                                                         |
+| I AM GOING TO MAKE THAT IN THIS PROJECT. THAT OF TIMING FOR OUR LEDS WITH USING         |
+| WATCHDOG TIMER. FIRSTLY LED RED WILL BE BLINK 30 TIMES. BY THE WAY I AM REFRESH THE     |
+| WATCHDOG TIMER AND AFTER BLUE LED WILL BE BLINK WHEN THE 30 TIMES FINISHED AND OFCOURSE |
+| MCU GOING TO RESTART BECAUSE I AM NOT REFRESH THE WATCHDOG TIMER WHILE BLUE LED HAVE    |
+| BEEN BLINK.                                                                             |
++-----------------------------------------------------------------------------------------+
+
++------------------------------------------+----------------------------------------------+
+| CIRCUIT :                                | PIN DESCRIPTION :                            |            
+|                                          |                                              |                      
+|   +-------------+                        | P312  --> OUTPUT INITIAL LOW CONNECTED "R"   |                    
+|   |             |                        | P311  --> OUTPUT INITIAL LOW CONNECTED "B"   |                      
+|   |       P312  |------------------+     |                                              |
+|   |             |                  |     | R     --> RED LED                            |
+|   |       P311  |---------+        |     | B     --> BLUED LED                          |
+|   |             |        _|_      _|_    |                                              |
+|   |             |        \ / B    \ / R  |                                              |
+|   |             |         |        |     |                                              |
+|   |             |         |________|     |                                              |
+|   |             |              |         |                                              |
+|   |     MCU     |            -----       |                                              |
+|   +-------------+             ---        |                                              |
+|                                -         |                                              |
+|                                          |                                              |
+|                                          |                                              |
++------------------------------------------+----------------------------------------------+
