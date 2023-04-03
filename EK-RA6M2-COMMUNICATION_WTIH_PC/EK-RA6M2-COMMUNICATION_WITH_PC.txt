@@ -1,0 +1,40 @@
++----------------------------------------------------------------------------------------+
+|                                 COMMUNICATION_WITH_PC                                  |
+|----------------------------------------------------------------------------------------|
+| PROJECT INFORMATION     :                                                              |
+|                                                                                        |
+| PORJECT NAME            : COMMUNICATION_WITH_PC                                        |
+| CREATED BY              : FERDI KURNAZ                                                 |
+| DATE                    : 03.04.2023                                                   |
+| IDE                     : e2 STUDIO                                                    |
+| SOFTWARE LANGUAGE       : C                                                            |
+| COMPANY                 : MEGA ENDUSTRI CONTROL SYSTEMS                                |
+|----------------------------------------------------------------------------------------|
+| DESCRIPTION             :                                                              |
+|                                                                                        |
+| WE ARE ENSURE COMMUNICATION BETWEEN PC AND MCU ON USB CABLE SO SERIAL COMMUNICATION    |
+| WE ARE USING THE JLINK VIEWR FOR SEND COMMAND TO MCU. OUR PROJECT MISSION IS OPEN AND  |
+| CLOSE THE RES LED. OUR PROCESS IS WORKS LIKKE THIS OPENING RED LED WHEN WE SEND 1 ON   |
+| JLINK AND THE RED LED CLOSING IN THE OTHER STATUS.                                     | 
+|                                                                                        |
+|----------------------------------------------------------------------------------------|
+| CIRCUIT                 :                          PC                                  |
+|                                               +----------+                             |
+|                                               |          |         USB : DEBUG SOCKET  |
+|       MCU                                     |          |        P302 : OUTPUT        |
+| +---------------+                 +-----------+----------+                             |
+| |               |                 |            \          \                            |
+| |           USB |<----------------+             \----------\                           |
+| |               |                                                                      |
+| |               |                                                                      |
+| |               |                                                                      |
+| |               |               R                                                      |
+| |               |           +--------+                                                 |
+| |          P312 |>----------|  330   |---------------------------+                     |
+| |               |           +--------+                          _|_                    |
+| |               |                                               \ / RED LED            |
+| |               |                                                |                     |
+| +---------------+                                               _|_                    |
+|     RA6M2                                                        -                     |                        
+|                                                                                        |
+|----------------------------------------------------------------------------------------+
