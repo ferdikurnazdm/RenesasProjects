@@ -4,6 +4,7 @@
 | PROJECT INFORMATION :                                                                         |
 |                                                                                               |
 | PROJECT NAME        : FREERTOS_DENEME_001                                                     |
+| COMPANY             : MEGA ENDUSTRI CONTROL SYSTEMS                                           |
 | CREATED BY          : FERDI KURNAZ                                                            |
 | DATE                : 08.03.2023                                                              |
 | BOARD               : EK-RA6M2                                                                |
