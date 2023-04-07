@@ -1,0 +1,48 @@
++----------------------------------------------------------------------------------------+
+|                                     ICU TRIAL APP                                      |                              
+|----------------------------------------------------------------------------------------|
+| PROJECT INFORMATION     :                                                              |
+|                                                                                        |
+| PORJECT NAME            : ICU TRIAL APP                                                |
+| CREATED BY              : FERDI KURNAZ                                                 |
+| DATE                    : 07.04.2023                                                   |
+| IDE                     : e2 STUDIO                                                    |
+| SOFTWARE LANGUAGE       : C                                                            |
+| COMPANY                 : MEGA ENDUSTRI CONTROL SYSTEMS                                |
+|----------------------------------------------------------------------------------------|
+| DESCRIPTION             :                                                              |
+|                                                                                        |
+| WE ARE USING THE INTERRUPT IN THIS PROJECT. OUR PURPOSE IS THAT WHEN PRESSED TO BUTTON |
+| THAT THIS BUTTON DEFINED BY MYSELF. THEN RED LED WILL BE BLINK. THEN WE ARE UNDERSTAND |
+| THAT. THE INTERRUPT IS WORKING. THE INTERRUPT MODULE NAME IS IRQ. DESCRIPTION OF THAT  |
+| IS INTERRUPT REQUEST. THIS MODULE IS A EXTERNAL MODULE. IT HAVE A LOT OF CHANNEL. IN   |
+| ADDTION THE EVENTS AND CALLBACK FUNTION CAN USE WITH THIS MODULE. MY PREFER IS EVENT   |
+| FOR THIS PROJECT. BY THE WAY I DO NOT ANYTHING INFINITI LOOP IN MAIN LOOP              |
+|----------------------------------------------------------------------------------------|
+| CIRCUIT                 :                                                              |
+|                                                             P312 : OUTPUT              |
+|                                                             P202 : INPUT               |
+|                                                                                        |
+| +-------------+                                                                        |
+| |             |                                                                        |
+| |        P312 |---------+                    +VCC                                      |
+| |             |        _|_                   ___                                       |
+| |             |        \ /  RED LED           |                                        |
+| |             |        _|_                    |                                        |
+| |             |         -                     *                                        |
+| |             |                             -|                                         |
+| |             |                               *                                        |
+| |             |                               |                                        |
+| |        P202 |-------------+                 |                                        |
+| |             |             |                _|_                                       |
+| |             |             |             R  | | 330 OHM                               |
+| |     MCU     |             |                |_|                                       |
+| +-------------+             +-----------------|                                        |
+|                                              _|_                                       |
+|                                           R  | | 10K OHM                               |
+|                                              |_|                                       |
+|                                               |                                        |
+|                                              _|_                                       |
+|                                               -                                        |
+|                                                                                        |
++----------------------------------------------------------------------------------------+
