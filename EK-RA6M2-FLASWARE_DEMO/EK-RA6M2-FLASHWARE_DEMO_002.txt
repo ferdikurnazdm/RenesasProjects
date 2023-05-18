@@ -1,0 +1,83 @@
++----------------------------------------------------------------------------------------+
+|                              FLASHWARE DEMO                                            |                                
+|----------------------------------------------------------------------------------------|
+| PROJECT INFORMATION     :                                                              | 
+|                                                                                        |
+| PORJECT NAME            : FLASHWARE DEMO                                               |
+| CREATED BY              : FERDI KURNAZ                                                 |
+| DATE                    : 28.04.2023                                                   |
+| IDE                     : e2 STUDIO                                                    |
+| SOFTWARE LANGUAGE       : C                                                            |
+| COMPANY                 : MEGA ENDUSTRI                                                |
+| PROJECT VERSION         : 002                                                          |
+|----------------------------------------------------------------------------------------|
+| DESCRIPTION             :
+|
+| 
+|
+|
+|----------------------------------------------------------------------------------------|
+| CIRCUIT                 :                 +5V                                          |
+|                                           ___                         PC               |
+| +--------------------+                     |                     +----------+          |
+| |                    |               +-----+-----+               |          |          |
+| |            P410    |-------------->| RS-485    |               |__________|          |
+| |            P411    |<--------------| CONVERTER |<-------------->\          \         |
+| |            P310    |-------------->|           |-----| GND       \__________\        |
+| |                    |               +-----------+      _____                          |
+| |            P312    |>---------------------------------|___|--------+                 |
+| |                    |                                    R         _|_                |
+| |            P113    |>----------------------------+                \ / L              |
+| |                    |   __    __                  |                _|_                |
+| |                    |  |  |__|  |__|              |                 -                 |
+| |                    |                    +--------+------+                            |
+| |                    |                    |               |                            |
+| |                    |                    | MOSFET DRIVER |------> OUTPUT              |
+| |                    |                    +---------------+                            |
+| |                    |                                                                 |
+| |                    |                                                                 |
+| +--------------------+                                                                 |
+|    RENESAS RA6M2                                                                       |
+|                                                                                        |
+|                                                                                        |
+|----------------------------------------------------------------------------------------|
+| CIRCUIT DESCRIPTIONS    :                                                              |
+|                                                                                        |
+| 	COMPONENTS          :                                                              |
+|                          	MICRO CONTROLLER UNIT	-                                  |
+|                             RS-485 CONVERTER        -                                  |
+|                             DELTA CONVERTER         -                                  |
+|                             DIGITUS CONVERTER       -                                  |
+|                             PERSONAL COMPUTER       -                                  |
+|                             RESISTOR                330 OHM                            | 
+|                             LED DIOEDE              RED                                |
+|                             MOSFET DRIVER           -                                  |
+|                                                                                        |
+|	PIN COONECTION      :	                                                           |
+|		MCU PINS      :                                                              |
+|                          	P410	OUTPUT	RS-485 CONVERTER (RO)                    |
+|                             P411	INPUT       RS-485 CONVERTER (DI)                    |
+|                             P310	OUTPUT      RS-485 CONVERTER (RE, DE)                |
+|                             P312	OUTPUT	CONNECTED THE RESISTOR                   |
+|                             P113	OUTPUT	MOSFET DRIVER                            |
+|		RS-485 PINS   :                                                              |
+|					A	OUTPUT	CONNECTED TO DATA + ON DELTA CONVERTER   |
+|                             B	INPUT		CONNECTED TO DATA - ON DELTA CONVERTER   |
+|                             DE	INPUT		CONNECTED TO P310 ON MCU                 |
+|                             RE	INPUT		CONNECTED TO P310 ON MCU                 |
+|                             RO	OUTPUT	CONNECTED TO P410 ON MCU                 |
+|                             DI	INPUT		CONNECTED TO P411 ON MCU                 |
+|                             VCC	POWER		CONNECTED TO +5V ON MCU                  |
+|                             GND	POWER		CONNECTED TO GROUND ON MCU               |
+|		                                                                             |
+|		MOSFET DRIVER :	                                                           |
+|					SIG	INPUT		CONNECTED TO P113 ON MCU                 |
+|					VCC	POWER		CONNECTED TO +5V ON MCU                  |
+|					GND	POWER		CONNECTED TO GROUND ON MCU               |
+|					VIN	INPUT		CONNECTED TO POWER SUPPLY +              |
+|					V+	OUTPUT	CONNECTED TO OSCILLISCOP +               |
+|					V-	OUTPUT	CONNECTED TO OSCIILISCOP -               |
+|                                                                                        |
+|                                                                                        |
+|                                                                                        |
++----------------------------------------------------------------------------------------+
