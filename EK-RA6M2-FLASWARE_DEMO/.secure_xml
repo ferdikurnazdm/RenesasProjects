@@ -62,6 +62,7 @@
       <configSetting altId="gpt2.gtioca.p113" configurationId="gpt2.gtioca" isUsedByDriver="true"/>
       <configSetting altId="p105.input" configurationId="p105"/>
       <configSetting altId="p106.output.low" configurationId="p106"/>
+      <configSetting altId="p111.input" configurationId="p111"/>
       <configSetting altId="p310.output.low" configurationId="p310"/>
       <configSetting altId="p312.output.low" configurationId="p312"/>
       <configSetting altId="p400.output.low" configurationId="p400"/>

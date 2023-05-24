@@ -20,6 +20,7 @@
 fsp_err_t err = FSP_SUCCESS;
 uint8_t banner[] = MEGABANNER;
 uint8_t buffer[11];        //{0x02,'','','','',''};
+int array_size = 0;
 
 //////////////////////////////////////
 //------------methods---------------//
@@ -35,7 +36,7 @@ fsp_err_t uart_write_banner(void) {
 
 uint8_t * uart_read(void) {
     R_SCI_UART_Read(&g_uart0_ctrl, buffer, sizeof(buffer));
-    return &buffer;
+    return &buffer[0];
 }
 
 fsp_err_t uart_write(uint8_t * p_src) {
@@ -47,7 +48,20 @@ fsp_err_t uart_stop(void) {
     err = R_GPT_Stop(&g_timer0_ctrl);
     return err;
 }
+
 fsp_err_t uart_start(void) {
     err = R_GPT_Start(&g_timer0_ctrl);
     return err;
 }
+
+int get_array_size() {
+    array_size = 0;
+    int m = 0;
+    for (m = 0; m < (int)sizeof(buffer); ++m) {
+        if (buffer[m] !='\0' && buffer[m] != '\n') {
+            array_size++;
+        }
+    }
+    return array_size;
+}
+

@@ -10,12 +10,19 @@
 #include "r_ioport.h"
 #include "r_uart_api.h"
 #include "r_ioport_api.h"
+#include "bsp_pin_cfg.h"
+#include "bsp_api.h"
 //---------------------------------------------------------------------//
 fsp_err_t status;
-int buf_comp=(500);
+bsp_io_level_t p_level;
+int reset_status = 1;
+int size_of_array = 0;
+int q1_result;
+int buf_comp = (500);
+uint8_t ek_response[] = {'0', '0', '0', '0', '0', '0', '0'};
 uint8_t response[] = "Q1XXXXXX";
 uint8_t total[11] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
-unsigned char arr_unsigned_base[11] = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0',0X03,'\0'};
+unsigned char arr_unsigned_base[11] = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
 //--------------------------------------------------------------------//
 void ex_handle(fsp_err_t state);
 
@@ -40,70 +47,87 @@ void hal_entry(void)
     status = uart_write_banner();
     ex_handle(status);
     R_BSP_SoftwareDelay(1000, BSP_DELAY_UNITS_MILLISECONDS);
-
-    uint32_t gpt_desired_u_sec = (uint32_t)hz_to_usec(500);
+    uint32_t gpt_desired_u_sec = (uint32_t)hz_to_usec(1389);
     uint32_t calculated_period = period_calculate(gpt_desired_u_sec);
     gpt_update_period(calculated_period);
 
     while(1) {
-        uint8_t * p_received_data = uart_read();
-        R_BSP_SoftwareDelay(1000, BSP_DELAY_UNITS_MILLISECONDS);
-
-        //**********************************************************//
-        int result = check_smith_format(p_received_data);
-        if (result != -1) {
-            unsigned char leaved_lrc = split_lrc(p_received_data, result);
-            unsigned char * p_converted_unsigned_char_data = convert_unsigned_char(p_received_data);
-
-
-            for (size_t i = 1; i < 9; ++i) {
-                arr_unsigned_base[i] = (unsigned char) *(p_converted_unsigned_char_data + i);
-            }
-            R_BSP_SoftwareDelay(50, BSP_DELAY_UNITS_MILLISECONDS);
-            if (ıs_lrc_valid(leaved_lrc, &arr_unsigned_base[1],result)) {
-
-                uint8_t * p_salt_data = get_salt_data(p_received_data);
-
-                int q1_result = q1_command_check(p_salt_data);
-
-                if (q1_result==0) {
-                    uint8_t * p_meaningful_data = get_meaningful_data();
-
-                    int value = array_to_int(p_meaningful_data);
-
-                    if (value != buf_comp && value!='\0') {
-
-                        uint64_t converted_hertz = debi_to_hertz(value);
-                        if (converted_hertz == (uint64_t)-1) {
-                            uart_stop();
+        status = R_IOPORT_PinRead(&g_ioport_ctrl, BOARD_ACTIVATE, &p_level);
+        if ((p_level) == BSP_IO_LEVEL_HIGH) {
+            uint8_t * p_received_data = uart_read();
+                    R_BSP_SoftwareDelay(1000, BSP_DELAY_UNITS_MILLISECONDS);
+                    int etx_index = check_smith_format(p_received_data);
+                    if (etx_index != -1) {
+                        unsigned char leaved_lrc = split_lrc(p_received_data, etx_index);
+                        size_of_array =  get_array_size();
+                        get_etx_index(p_received_data, size_of_array);
+                        unsigned char * p_converted_unsigned_char_data = convert_unsigned_char(p_received_data);
+                        int j = 1;
+                        for (j = 1; j < etx_index; ++j) {
+                            arr_unsigned_base[j] = (unsigned char) *(p_converted_unsigned_char_data + j);
                         }
-                        else {
-                            gpt_desired_u_sec = (uint32_t)hz_to_usec(converted_hertz);
-                            calculated_period = period_calculate(gpt_desired_u_sec);
-                            gpt_update_period(calculated_period);
-                            uart_start();
-                            buf_comp = value;
-                        }
-                        //------------SEND SMITH PROTHOCOL METHOD------------//
-                        //uint8_t * P_converted_uint8_command = create_special_command();
-                        set_command_size();
-                        unsigned char * p_created_command = create_command();
-                        uint8_t * P_converted_uint8_command = convert_to_uint8(p_created_command);
-
-                        for (size_t i = 0; i < 11; ++i) {
-                            total[i] = *(P_converted_uint8_command + i);
-                        }
-
+                        arr_unsigned_base[etx_index] = (unsigned char)(0x03);
                         R_BSP_SoftwareDelay(50, BSP_DELAY_UNITS_MILLISECONDS);
-                        status = uart_write(total); //lrc ıs true;
+                        if (ıs_lrc_valid(leaved_lrc, &arr_unsigned_base[1],etx_index)) {
+                            uint8_t * p_salt_data = get_salt_data(p_received_data);
+                            int key = command_router(p_salt_data);
+                            if (key != -1) {
+                                switch (key) {
+                                    case 0:
+                                        q1_result = q1_command_check(p_salt_data);
+                                        if (q1_result == 0) {
+                                            uint8_t * p_meaningful_data = get_meaningful_data();
+                                            int value = array_to_int(p_meaningful_data);
+                                            if (value != buf_comp && value != '\0') {
+                                                uint64_t converted_hertz = debi_to_hertz(value);
+                                                if (converted_hertz == (uint64_t)(-1)) {
+                                                    uart_stop();
+                                                }
+                                                else {
+                                                    reset_status = 0;
+                                                    gpt_desired_u_sec = (uint32_t)hz_to_usec(converted_hertz);
+                                                    calculated_period = period_calculate(gpt_desired_u_sec);
+                                                    gpt_update_period(calculated_period);
+                                                    uart_start();
+                                                    buf_comp = value;
+                                                }
+                                                //------------SEND SMITH PROTHOCOL METHOD------------//
+                                                //uint8_t * P_converted_uint8_command = create_special_command();
+                                                set_command_size();
+                                                unsigned char * p_created_command = create_command();
+                                                uint8_t * P_converted_uint8_command = convert_to_uint8(p_created_command);
+                                                for (size_t i = 0; i < 11; ++i) {
+                                                    total[i] = *(P_converted_uint8_command + i);
+                                                }
+                                                R_BSP_SoftwareDelay(50, BSP_DELAY_UNITS_MILLISECONDS);
+                                                status = uart_write(total); //lrc ıs true;
+                                            }
+                                        }
+                                        break;
+                                    case 1:
+                                        R_BSP_SoftwareDelay(50, BSP_DELAY_UNITS_MILLISECONDS);
+                                        status = uart_write(total); //lrc ıs true;
+                                        break;
+                                    case 2:
+                                        if (reset_status == 0) {
+                                            ek_response[6] = '0';
+                                        }
+                                        else {
+                                            ek_response[6] = '1';
+                                        }
+                                        status = uart_write(ek_response);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
                     }
-
-
-                }
-
-
-            }
         }
+        else {
+            uart_stop();
+        }
+
 
 
 

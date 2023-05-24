@@ -17,23 +17,17 @@ unsigned char const ETX = 0x03;
 int counter_5 = 0;
 
 
-unsigned char tmp[11]      = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0',0X03};
+unsigned char tmp[11]      = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0','\0'};
 unsigned char command[11]  = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0',0X03};
 uint8_t arr_uint8_base[11] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
 uint8_t salt_data[8]       = {'\0','\0','\0','\0','\0','\0','\0','\0'};
 uint8_t meaningful_data[8] = {'\0','\0','\0','\0','\0','\0','\0','\0'};
 int transmitter_array_size = 0;
+int index_etx = 0;
 
 ///////////////////////////////////////////////
 //----------------methods--------------------//
-unsigned char get_lrc(unsigned char * pbData,  int iCount) {
-    unsigned char chLRC = 0;
-    while (iCount > 0) {
-        chLRC ^= *pbData++;
-        iCount--;
-    }
-    return chLRC;
-}
+
 
 bool ıs_lrc_valid(const unsigned char chReceivedLRC, unsigned char * pbData, int etx_index) {
     if ((pbData != NULL) && (etx_index > 0) ){
@@ -58,10 +52,20 @@ unsigned char * create_command() {
     for (k = 1; k <= transmitter_array_size; ++k) {
         command[k] = salt_data[(k - 1)];//val[j+0];
     }
-    command[(transmitter_array_size+1)] = ETX;
+    command[(transmitter_array_size + 1)] = ETX;
     command[(transmitter_array_size + 2)] = get_lrc(&command[1],(transmitter_array_size + 1));
     return &command[0];
 }
+
+unsigned char * convert_unsigned_char(uint8_t * val) {
+    int i =0;
+    for (i = 1; i < index_etx; ++i) {
+        tmp[i] = (unsigned char)*(val + i);
+    }
+    tmp[index_etx] = ETX;
+    return &tmp[0];
+}
+
 unsigned char split_lrc(uint8_t * received_array, int etx_index) {
     if (received_array[etx_index] == ETX) {
         unsigned char var = (unsigned char)*(received_array + (etx_index + 1));
@@ -70,11 +74,13 @@ unsigned char split_lrc(uint8_t * received_array, int etx_index) {
     return 1;
 }
 
-unsigned char * convert_unsigned_char(uint8_t * val) {
-    for (size_t i = 1; i < 9; ++i) {
-        tmp[i] = (unsigned char)*(val + i);
+unsigned char get_lrc(unsigned char * pbData,  int iCount) {
+    unsigned char chLRC = 0;
+    while (iCount > 0) {
+        chLRC ^= *pbData++;
+        iCount--;
     }
-    return &tmp[0];
+    return chLRC;
 }
 
 uint8_t * convert_to_uint8(unsigned char * arr5) {
@@ -95,12 +101,61 @@ uint8_t * get_salt_data(uint8_t * val) {
     return &salt_data[0];
 }
 
+uint8_t * get_meaningful_data(void) {
+    set_array_to_null(meaningful_data);
+    for (size_t i = 4; i < sizeof(salt_data); ++i) {
+        if (salt_data[(i)] != '\0') {
+            meaningful_data[(i - 4)] = salt_data[i];
+        }
+        else {
+            return &meaningful_data[0];
+        }
+    }
+    return &meaningful_data[0];
+}
+
 void insert_salt_data(void) {
     if (salt_data[0] != '\0') {
         for (size_t i = 0; i < 8; ++i) {
             // WRITE CODE HERE
         }
     }
+}
+
+void set_array_to_null(uint8_t * array) {
+    for (size_t i = 0; i < 8; ++i) {
+        array[i]='\0';
+    }
+}
+
+void set_command_size() {
+    transmitter_array_size = 0;
+    for (size_t j = 0; j < sizeof(salt_data); ++j) {
+        if (salt_data[j] != '\0') {
+            transmitter_array_size++;
+        }
+    }
+}
+
+int command_router(uint8_t * array) {
+    int route = -1;
+    if (*(array + 2) == 'Q' && *(array + 3) == '1') {
+        route = 0;
+    }
+    if (*(array + 2) == 'R' && *(array + 3) == 'Q') {
+        route = 1;
+    }
+    if (*(array + 2) == 'E' && *(array + 3) == 'K') {
+        route = 2;
+    }
+    return route;
+}
+
+int q1_command_check(uint8_t * array) {
+    if (*(array + 2) == 'Q' && *(array + 3) == '1') {
+        return 0;
+    }
+    return -1;
 }
 
 int check_smith_format(uint8_t * array) {
@@ -118,37 +173,16 @@ int check_smith_format(uint8_t * array) {
     return -1;
 }
 
-uint8_t * get_meaningful_data(void) {
-    set_array_to_null(meaningful_data);
-    for (size_t i = 0; i < sizeof(salt_data); ++i) {
-        if (salt_data[(i + 2)] !='\0') {
-            meaningful_data[i] = salt_data[(i + 2)];
+int get_etx_index(uint8_t * array, int size_arr) {
+    index_etx = 0;
+    int o = 0;
+    for (o = 0; o < size_arr; ++o) {
+        if (*(array + o) != ETX) {
+            index_etx++;
         }
         else {
-            return &meaningful_data[0];
+            return index_etx;
         }
-    }
-    return &meaningful_data[0];
-}
-
-void set_array_to_null(uint8_t * array) {
-    for (size_t i = 0; i < 8; ++i) {
-        array[i]='\0';
-    }
-}
-
-int q1_command_check(uint8_t * array) {
-    if (*(array)=='Q' && *(array + 1)=='1') {
-        return 0;
     }
     return -1;
-}
-
-void  set_command_size() {
-    transmitter_array_size = 0;
-    for (size_t j = 0; j < sizeof(salt_data); ++j) {
-        if (salt_data[j] != '\0') {
-            transmitter_array_size++;
-        }
-    }
 }

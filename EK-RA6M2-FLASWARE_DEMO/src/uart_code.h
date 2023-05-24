@@ -16,5 +16,6 @@ fsp_err_t uart_write(uint8_t * p_src);
 fsp_err_t uart_stop(void);
 fsp_err_t uart_start(void);
 uint8_t * uart_read(void);
+int get_array_size();
 
 #endif /* UART_CODE_H_ */

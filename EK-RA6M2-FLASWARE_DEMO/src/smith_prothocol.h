@@ -23,5 +23,7 @@ void set_array_to_null(uint8_t * array);
 void insert_salt_data(void);
 int q1_command_check(uint8_t * array);
 void set_command_size(void);
+int command_router(uint8_t * array);
+int get_etx_index(uint8_t * array, int size_arr);
 
 #endif /* SMITH_PROTHOCOL_H_ */
