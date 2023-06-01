@@ -285,6 +285,7 @@
   </raModuleConfiguration>
   <raPinConfiguration>
     <symbolicName propertyId="p111.symbolic_name" value="BOARD_ACTIVATE"/>
+    <symbolicName propertyId="p113.symbolic_name" value="GPT_OUTOUT_PIN"/>
     <symbolicName propertyId="p312.symbolic_name" value="RED_ALARM_LED"/>
     <pincfg active="true" name="RA6M2-EK.pincfg" selected="true" symbol="g_bsp_pin_cfg">
       <configSetting altId="adc1.an00.p004" configurationId="adc1.an00"/>
@@ -323,7 +324,6 @@
       <configSetting altId="p111.input" configurationId="p111"/>
       <configSetting altId="p111.gpio_mode.gpio_mode_in" configurationId="p111.gpio_mode"/>
       <configSetting altId="p113.gpt2.gtioca" configurationId="p113"/>
-      <configSetting altId="p113.gpio_speed.gpio_speed_medium" configurationId="p113.gpio_drivecapacity"/>
       <configSetting altId="p113.gpio_mode.gpio_mode_peripheral" configurationId="p113.gpio_mode"/>
       <configSetting altId="p205.ctsu0.tscap" configurationId="p205"/>
       <configSetting altId="p205.gpio_mode.gpio_mode_peripheral" configurationId="p205.gpio_mode"/>

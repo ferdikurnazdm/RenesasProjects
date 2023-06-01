@@ -19,7 +19,7 @@
 //------------descriptions----------//
 fsp_err_t err = FSP_SUCCESS;
 uint8_t banner[] = MEGABANNER;
-uint8_t buffer[11];        //{0x02,'','','','',''};
+uint8_t buffer[12];                 //[11];        //{0x02,'','','','',''};
 int array_size = 0;
 
 //////////////////////////////////////

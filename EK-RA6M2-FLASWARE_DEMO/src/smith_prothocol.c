@@ -16,13 +16,13 @@ unsigned char const STX = 0x02;
 unsigned char const ETX = 0x03;
 int counter_5 = 0;
 
-
-unsigned char tmp[11]      = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0','\0'};
-unsigned char command[11]  = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0',0X03};
-uint8_t arr_uint8_base[11] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
-uint8_t salt_data[8]       = {'\0','\0','\0','\0','\0','\0','\0','\0'};
-uint8_t meaningful_data[8] = {'\0','\0','\0','\0','\0','\0','\0','\0'};
-int transmitter_array_size = 0;
+unsigned char ek_response_arr[12] = {0X02,'\0','\0','0','0','0','0','0','0','\0',0x03};
+unsigned char tmp[11]             = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0','\0'};
+unsigned char command[11]         = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0',0X03};
+uint8_t arr_uint8_base[11]        = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
+uint8_t salt_data[8]              = {'\0','\0','\0','\0','\0','\0','\0','\0'};
+uint8_t meaningful_data[8]        = {'\0','\0','\0','\0','\0','\0','\0','\0'};
+int transmitter_array_size        = 0;
 int index_etx = 0;
 
 ///////////////////////////////////////////////
@@ -185,4 +185,21 @@ int get_etx_index(uint8_t * array, int size_arr) {
         }
     }
     return -1;
+}
+
+unsigned char * send_ek_response(uint8_t * array, int reset_state){
+    uint8_t A1 = *(array);
+    uint8_t A2 = *(array + 1);
+    ek_response_arr[1] = (unsigned char) A1;
+    ek_response_arr[2] = (unsigned char) A2;
+
+    if (reset_state == 0) {
+        ek_response_arr[9] = '0';
+    }
+    else {
+        ek_response_arr[9] = '1';
+    }
+    ek_response_arr[11] = get_lrc(&ek_response_arr[1], 10);
+    return &ek_response_arr[0];
+
 }

@@ -12,10 +12,18 @@
 #include "r_ioport_api.h"
 #include "hal_data.h"
 #include "timer_code.h"
+#include "bsp_cfg.h"
+#include "bsp_api.h"
+#include "board_cfg.h"
+#include "bsp_pin_cfg.h"
+#include "r_gpt_cfg.h"
+#include "r_gpt.h"
+#include "r_timer_api.h"
 
 ///////////////////////////////////////////////////
 //-----------descriptions------------------------//
 fsp_err_t err_gpt = FSP_SUCCESS;
+
 
 ////////////////////////////////////////////////////
 //-----------methods------------------------------//

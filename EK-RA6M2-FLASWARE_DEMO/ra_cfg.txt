@@ -118,7 +118,7 @@ FSP Configuration
       P110 75 DEBUG0_TDI - Low None "Peripheral mode" CMOS None "CAN1: CRX; CMP0: VCOUT; DEBUG0: TDI; GPT1: GTIOCB; IRQ0: IRQ03; OPS0: GTOVLO; SCI2: CTS_RTS_SS; SCI9: RXD_MISO; SCI9: SCL; SPI1: MISO" - IO - - 
       P111 76 GPIO BOARD_ACTIVATE - None "Input mode" - None "BUS0: A05; GPT3: GTIOCA; IRQ0: IRQ04; SCI2: SCK; SCI9: SCK; SPI1: RSPCK" - IO - - 
       P112 77 - - - - Disabled - - "BUS0: A04; GPT3: GTIOCB; SCI1: SCK; SCI2: SDA; SCI2: TXD_MOSI; SPI1: SSL0; SSI0: SSISCK" - None - - 
-      P113 78 GPT2_GTIOCA - Medium - "Peripheral mode" CMOS None "BUS0: A03; GPT2: GTIOCA; SCI2: RXD_MISO; SCI2: SCL; SSI0: SSIWS" - IO - - 
+      P113 78 GPT2_GTIOCA GPT_OUTOUT_PIN Low - "Peripheral mode" CMOS None "BUS0: A03; GPT2: GTIOCA; SCI2: RXD_MISO; SCI2: SCL; SSI0: SSIWS" - IO - - 
       P114 79 - - - - Disabled - - "BUS0: A02; GPT2: GTIOCB; SSI0: SSIRXD" - None - - 
       P115 80 - - - - Disabled - - "BUS0: A01; GPT4: GTIOCA; SSI0: SSITXD" - None - - 
       P200 57 - - - - Disabled - - "IRQ0: NMI" - None - - 
@@ -263,7 +263,7 @@ FSP Configuration
       P110 75 DEBUG0_TDI - Low None "Peripheral mode" CMOS None "CAN1: CRX; CMP0: VCOUT; DEBUG0: TDI; GPT1: GTIOCB; IRQ0: IRQ03; OPS0: GTOVLO; SCI2: CTS_RTS_SS; SCI9: RXD_MISO; SCI9: SCL; SPI1: MISO" - IO - - 
       P111 76 - BOARD_ACTIVATE - None Disabled - None "BUS0: A05; GPT3: GTIOCA; IRQ0: IRQ04; SCI2: SCK; SCI9: SCK; SPI1: RSPCK" - IO - - 
       P112 77 - - - - Disabled - - "BUS0: A04; GPT3: GTIOCB; SCI1: SCK; SCI2: SDA; SCI2: TXD_MOSI; SPI1: SSL0; SSI0: SSISCK" - None - - 
-      P113 78 - - Low - Disabled CMOS None "BUS0: A03; GPT2: GTIOCA; SCI2: RXD_MISO; SCI2: SCL; SSI0: SSIWS" - IO - - 
+      P113 78 - GPT_OUTOUT_PIN Low - Disabled CMOS None "BUS0: A03; GPT2: GTIOCA; SCI2: RXD_MISO; SCI2: SCL; SSI0: SSIWS" - IO - - 
       P114 79 - - - - Disabled - - "BUS0: A02; GPT2: GTIOCB; SSI0: SSIRXD" - None - - 
       P115 80 - - - - Disabled - - "BUS0: A01; GPT4: GTIOCA; SSI0: SSITXD" - None - - 
       P200 57 - - - - Disabled - - "IRQ0: NMI" - None - - 

@@ -19,9 +19,9 @@ int reset_status = 1;
 int size_of_array = 0;
 int q1_result;
 int buf_comp = (500);
-uint8_t ek_response[] = {'0', '0', '0', '0', '0', '0', '0'};
+//uint8_t ek_response[] = {'0', '0', '0', '0', '0', '0', '0'};
 uint8_t response[] = "Q1XXXXXX";
-uint8_t total[11] = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
+uint8_t total[11]  = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
 unsigned char arr_unsigned_base[11] = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
 //--------------------------------------------------------------------//
 void ex_handle(fsp_err_t state);
@@ -50,12 +50,18 @@ void hal_entry(void)
     uint32_t gpt_desired_u_sec = (uint32_t)hz_to_usec(1389);
     uint32_t calculated_period = period_calculate(gpt_desired_u_sec);
     gpt_update_period(calculated_period);
-
     while(1) {
         status = R_IOPORT_PinRead(&g_ioport_ctrl, BOARD_ACTIVATE, &p_level);
+        R_BSP_SoftwareDelay(50, BSP_DELAY_UNITS_MILLISECONDS);
         if ((p_level) == BSP_IO_LEVEL_HIGH) {
+            if (reset_status == 1) {
+                gpt_desired_u_sec = (uint32_t)hz_to_usec(1389);
+                calculated_period = period_calculate(gpt_desired_u_sec);
+                gpt_update_period(calculated_period);
+                uart_start();
+            }
             uint8_t * p_received_data = uart_read();
-                    R_BSP_SoftwareDelay(1000, BSP_DELAY_UNITS_MILLISECONDS);
+                    R_BSP_SoftwareDelay(100, BSP_DELAY_UNITS_MILLISECONDS);
                     int etx_index = check_smith_format(p_received_data);
                     if (etx_index != -1) {
                         unsigned char leaved_lrc = split_lrc(p_received_data, etx_index);
@@ -109,13 +115,11 @@ void hal_entry(void)
                                         status = uart_write(total); //lrc ıs true;
                                         break;
                                     case 2:
-                                        if (reset_status == 0) {
-                                            ek_response[6] = '0';
+                                        ///  LOOK HERE AGAIN FOR EK COMMAND.
+                                        if (1) {
+                                            unsigned char * ek_command = send_ek_response(p_salt_data, reset_status);
+                                            status = uart_write(ek_command);
                                         }
-                                        else {
-                                            ek_response[6] = '1';
-                                        }
-                                        status = uart_write(ek_response);
                                         break;
                                     default:
                                         break;
@@ -126,6 +130,8 @@ void hal_entry(void)
         }
         else {
             uart_stop();
+            reset_status = 1;
+            // buf_comp değeri ayarlanabilir
         }
 
 

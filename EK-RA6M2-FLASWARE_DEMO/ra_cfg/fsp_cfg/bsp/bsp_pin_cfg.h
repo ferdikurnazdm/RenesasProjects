@@ -7,6 +7,7 @@
 FSP_HEADER
 
 #define BOARD_ACTIVATE (BSP_IO_PORT_01_PIN_11)
+#define GPT_OUTOUT_PIN (BSP_IO_PORT_01_PIN_13)
 #define RED_ALARM_LED (BSP_IO_PORT_03_PIN_12)
 extern const ioport_cfg_t g_bsp_pin_cfg; /* RA6M2-EK.pincfg */
 

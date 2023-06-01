@@ -56,7 +56,9 @@ src/timer_code.o: ../src/timer_code.c \
  C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra/fsp/inc/api/r_uart_api.h \
  C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra/fsp/inc/api/r_transfer_api.h \
  C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra_cfg/fsp_cfg/r_sci_uart_cfg.h \
- ../src/timer_code.h
+ ../src/timer_code.h \
+ C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra_cfg/fsp_cfg/bsp/board_cfg.h \
+ C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra_cfg/fsp_cfg/r_gpt_cfg.h
 C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra_gen/common_data.h:
 C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra/fsp/inc/api/bsp_api.h:
 C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra/fsp/inc/fsp_common_api.h:
@@ -115,3 +117,5 @@ C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra/fsp/inc/api/r_
 C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra/fsp/inc/api/r_transfer_api.h:
 C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra_cfg/fsp_cfg/r_sci_uart_cfg.h:
 ../src/timer_code.h:
+C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra_cfg/fsp_cfg/bsp/board_cfg.h:
+C:/Users/ferdi.kurnaz/e2_studio/workspace/FALSHWARE_DENEME_002/ra_cfg/fsp_cfg/r_gpt_cfg.h:
