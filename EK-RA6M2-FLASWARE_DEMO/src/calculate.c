@@ -1,9 +1,10 @@
 /*
  * calculate.c
  *
- *  Created on: 9 May 2023
+ *  Created on: 5 Haz 2023
  *      Author: ferdi.kurnaz
  */
+
 /////////////////////////////////////////
 //---------------imports---------------//
 #include <math.h>
@@ -56,3 +57,4 @@ uint64_t debi_to_hertz(int debi) {
     }
     return (uint64_t)(debi*debi_coef);
 }
+

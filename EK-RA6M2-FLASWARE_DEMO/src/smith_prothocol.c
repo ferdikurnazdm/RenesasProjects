@@ -1,9 +1,10 @@
 /*
  * smith_prothocol.c
  *
- *  Created on: 12 May 2023
+ *  Created on: 5 Haz 2023
  *      Author: ferdi.kurnaz
  */
+
 ///////////////////////////////////////////////
 //----------------imports------------------//
 #include "hal_data.h"
@@ -18,7 +19,7 @@ int counter_5 = 0;
 
 unsigned char ek_response_arr[12] = {0X02,'\0','\0','0','0','0','0','0','0','\0',0x03};
 unsigned char tmp[11]             = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0','\0'};
-unsigned char command[11]         = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0',0X03};
+unsigned char command[12]         = {0X02,'\0','\0','\0','\0','\0','\0','\0','\0',0X03};
 uint8_t arr_uint8_base[11]        = {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'};
 uint8_t salt_data[8]              = {'\0','\0','\0','\0','\0','\0','\0','\0'};
 uint8_t meaningful_data[8]        = {'\0','\0','\0','\0','\0','\0','\0','\0'};
@@ -48,6 +49,10 @@ bool ıs_lrc_valid(const unsigned char chReceivedLRC, unsigned char * pbData, in
 }*/
 
 unsigned char * create_command() {
+    for (size_t i = 1; i < 12; ++i) {
+        command[i] = '\0';
+    }
+    command[0] = 0x02;
     int k = 0;
     for (k = 1; k <= transmitter_array_size; ++k) {
         command[k] = salt_data[(k - 1)];//val[j+0];
@@ -128,13 +133,14 @@ void set_array_to_null(uint8_t * array) {
     }
 }
 
-void set_command_size() {
+int set_command_size() {
     transmitter_array_size = 0;
     for (size_t j = 0; j < sizeof(salt_data); ++j) {
         if (salt_data[j] != '\0') {
             transmitter_array_size++;
         }
     }
+    return transmitter_array_size;
 }
 
 int command_router(uint8_t * array) {
@@ -148,11 +154,21 @@ int command_router(uint8_t * array) {
     if (*(array + 2) == 'E' && *(array + 3) == 'K') {
         route = 2;
     }
+    if (*(array + 2) == 'Q' && *(array + 3) == '2') {
+        route = 3;
+    }
     return route;
 }
 
 int q1_command_check(uint8_t * array) {
     if (*(array + 2) == 'Q' && *(array + 3) == '1') {
+        return 0;
+    }
+    return -1;
+}
+
+int q2_command_check(uint8_t * array){
+    if (*(array + 2) == 'Q' && *(array + 3) == '2') {
         return 0;
     }
     return -1;

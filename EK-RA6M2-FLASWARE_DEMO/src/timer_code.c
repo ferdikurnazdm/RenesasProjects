@@ -1,9 +1,10 @@
 /*
  * timer_code.c
  *
- *  Created on: 9 May 2023
+ *  Created on: 5 Haz 2023
  *      Author: ferdi.kurnaz
  */
+
 ////////////////////////////////////////////////////
 //-----------imports------------------------------//
 #include "common_data.h"
@@ -23,6 +24,8 @@
 ///////////////////////////////////////////////////
 //-----------descriptions------------------------//
 fsp_err_t err_gpt = FSP_SUCCESS;
+timer_status_t * p_gpt_timer_0;
+timer_status_t * p_gpt_timer_1;
 
 
 ////////////////////////////////////////////////////
@@ -35,13 +38,54 @@ uint32_t period_calculate(uint32_t desired_u_sec) {
     return period_count_in;
 }
 
-fsp_err_t gpt_init(void) {
+fsp_err_t gpt0_init(void) {
     err_gpt = R_GPT_Open(&g_timer0_ctrl, &g_timer0_cfg);
     err_gpt = R_GPT_Start(&g_timer0_ctrl);
     return err_gpt;
 }
+fsp_err_t gpt1_init(void) {
+    err_gpt = R_GPT_Open(&g_timer1_ctrl, &g_timer1_cfg);
+    err_gpt = R_GPT_Start(&g_timer1_ctrl);
+    return err_gpt;
+}
 
-fsp_err_t gpt_update_period(uint32_t period) {
+fsp_err_t gpt_update_period_for_q1(uint32_t period) {
     err_gpt = R_GPT_PeriodSet(&g_timer0_ctrl, period);
     return err_gpt;
 }
+
+fsp_err_t gpt_update_period_for_q2(uint32_t period) {
+    err_gpt = R_GPT_PeriodSet(&g_timer1_ctrl, period);
+    return err_gpt;
+}
+
+fsp_err_t gpt0_stop(void) {
+    err_gpt = R_GPT_Stop(&g_timer0_ctrl);
+    return err_gpt;
+}
+
+fsp_err_t gpt1_stop(void) {
+    err_gpt = R_GPT_Stop(&g_timer1_ctrl);
+    return err_gpt;
+}
+
+fsp_err_t gpt0_start(void) {
+    err_gpt = R_GPT_Start(&g_timer0_ctrl);
+    return err_gpt;
+}
+fsp_err_t gpt1_start(void) {
+    err_gpt = R_GPT_Start(&g_timer1_ctrl);
+    return err_gpt;
+}
+int gpt_timer0_state(void){
+    // 0 --> stopped, 1 --> counting
+    R_GPT_StatusGet(&g_timer0_ctrl, p_gpt_timer_0);
+    return p_gpt_timer_0->state;
+}
+
+int gpt_timer1_state(void){
+    // 0 --> stopped, 1 --> counting
+    R_GPT_StatusGet(&g_timer1_ctrl, p_gpt_timer_1);
+    return p_gpt_timer_1->state;
+}
+

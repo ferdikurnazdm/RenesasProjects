@@ -59,7 +59,9 @@
       <configSetting altId="debug0.tdi.p110" configurationId="debug0.tdi" isUsedByDriver="true"/>
       <configSetting altId="debug0.tdo.p109" configurationId="debug0.tdo" isUsedByDriver="true"/>
       <configSetting altId="debug0.tms.p108" configurationId="debug0.tms" isUsedByDriver="true"/>
+      <configSetting altId="gpt1.gtioca.p405" configurationId="gpt1.gtioca"/>
       <configSetting altId="gpt2.gtioca.p113" configurationId="gpt2.gtioca" isUsedByDriver="true"/>
+      <configSetting altId="gpt5.gtiocb.p701" configurationId="gpt5.gtiocb" isUsedByDriver="true"/>
       <configSetting altId="p105.input" configurationId="p105"/>
       <configSetting altId="p106.output.low" configurationId="p106"/>
       <configSetting altId="p111.input" configurationId="p111"/>
@@ -68,6 +70,8 @@
       <configSetting altId="p400.output.low" configurationId="p400"/>
       <configSetting altId="sci0.rxd.p410" configurationId="sci0.rxd" isUsedByDriver="true"/>
       <configSetting altId="sci0.txd.p411" configurationId="sci0.txd" isUsedByDriver="true"/>
+      <configSetting altId="sci2.rxd.p301" configurationId="sci2.rxd"/>
+      <configSetting altId="sci2.txd.p302" configurationId="sci2.txd"/>
       <configSetting altId="sci7.rxd.p402" configurationId="sci7.rxd"/>
       <configSetting altId="sci7.txd.p401" configurationId="sci7.txd"/>
       <configSetting altId="spi0.miso.p100" configurationId="spi0.miso"/>

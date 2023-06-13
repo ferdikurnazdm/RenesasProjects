@@ -118,7 +118,7 @@ FSP Configuration
       P110 75 DEBUG0_TDI - Low None "Peripheral mode" CMOS None "CAN1: CRX; CMP0: VCOUT; DEBUG0: TDI; GPT1: GTIOCB; IRQ0: IRQ03; OPS0: GTOVLO; SCI2: CTS_RTS_SS; SCI9: RXD_MISO; SCI9: SCL; SPI1: MISO" - IO - - 
       P111 76 GPIO BOARD_ACTIVATE - None "Input mode" - None "BUS0: A05; GPT3: GTIOCA; IRQ0: IRQ04; SCI2: SCK; SCI9: SCK; SPI1: RSPCK" - IO - - 
       P112 77 - - - - Disabled - - "BUS0: A04; GPT3: GTIOCB; SCI1: SCK; SCI2: SDA; SCI2: TXD_MOSI; SPI1: SSL0; SSI0: SSISCK" - None - - 
-      P113 78 GPT2_GTIOCA GPT_OUTOUT_PIN Low - "Peripheral mode" CMOS None "BUS0: A03; GPT2: GTIOCA; SCI2: RXD_MISO; SCI2: SCL; SSI0: SSIWS" - IO - - 
+      P113 78 GPT2_GTIOCA - Low - "Peripheral mode" CMOS None "BUS0: A03; GPT2: GTIOCA; SCI2: RXD_MISO; SCI2: SCL; SSI0: SSIWS" - IO - - 
       P114 79 - - - - Disabled - - "BUS0: A02; GPT2: GTIOCB; SSI0: SSIRXD" - None - - 
       P115 80 - - - - Disabled - - "BUS0: A01; GPT4: GTIOCA; SSI0: SSITXD" - None - - 
       P200 57 - - - - Disabled - - "IRQ0: NMI" - None - - 
@@ -137,8 +137,8 @@ FSP Configuration
       P213 19 - - - - Disabled - - "ADC1: ADTRG; CGC0: XTAL; GPT0: GTIOCA; IRQ0: IRQ02; POEG2: GTETRG; SCI1: SDA; SCI1: TXD_MOSI" - None - - 
       P214 50 - - - - Disabled - - "ETHERC0: MDC; ETHERC0: MDC; OPS0: GTIU; QSPI0: QSPCLK; SDHI0: CLK; TRACE0: TCLK" - None - - 
       P300 72 DEBUG0_TCK - Low - "Peripheral mode" CMOS None "DEBUG0: SWCLK; DEBUG0: TCK; GPT0: GTIOCA; OPS0: GTOUUP; SPI1: SSL1" - IO - - 
-      P301 71 - - - - Disabled - - "AGT0: AGTIO; BUS0: A06; GPT4: GTIOCB; IRQ0: IRQ06; OPS0: GTOULO; SCI2: RXD_MISO; SCI2: SCL; SCI9: CTS_RTS_SS; SPI1: SSL2" - None - - 
-      P302 70 - - - - Disabled - - "BUS0: A07; GPT4: GTIOCA; IRQ0: IRQ05; OPS0: GTOUUP; SCI2: SDA; SCI2: TXD_MOSI; SPI1: SSL3" - None - - 
+      P301 71 SCI2_RXD_MISO - Low None "Peripheral mode" CMOS None "AGT0: AGTIO; BUS0: A06; GPT4: GTIOCB; IRQ0: IRQ06; OPS0: GTOULO; SCI2: RXD_MISO; SCI2: SCL; SCI9: CTS_RTS_SS; SPI1: SSL2" - IO - - 
+      P302 70 SCI2_TXD_MOSI - Low None "Peripheral mode" CMOS None "BUS0: A07; GPT4: GTIOCA; IRQ0: IRQ05; OPS0: GTOUUP; SCI2: SDA; SCI2: TXD_MOSI; SPI1: SSL3" - IO - - 
       P303 69 - - - - Disabled - - "BUS0: A08; GPT7: GTIOCB" - None - - 
       P304 66 - - - - Disabled - - "BUS0: A09; GPT7: GTIOCA; IRQ0: IRQ09; OPS0: GTOWLO; SCI6: RXD_MISO; SCI6: SCL" - None - - 
       P305 65 - - - - Disabled - - "BUS0: A10; IRQ0: IRQ08; OPS0: GTOWUP; QSPI0: QSPCLK; SCI6: SDA; SCI6: TXD_MOSI" - None - - 
@@ -155,7 +155,7 @@ FSP Configuration
       P402 3 SCI7_RXD_MISO - Low None "Peripheral mode" CMOS None "AGT0: AGTIO; AGT1: AGTIO; CAC0: CACREF; CAN0: CRX; ETHERC0: MDIO; ETHERC0: MDIO; IRQ0: IRQ04; PDC0: VSYNC; RTC0: RTCIC0; SCI7: RXD_MISO; SCI7: SCL; SSI: AUDIO_CLK" - IO - - 
       P403 4 - - - - Disabled - - "AGT0: AGTIO; AGT1: AGTIO; ETHERC0: LINKSTA; ETHERC0: LINKSTA; GPT3: GTIOCA; PDC0: PIXD7; RTC0: RTCIC1; SCI7: CTS_RTS_SS; SDHI1: DAT7; SSI0: SSISCK" - None - - 
       P404 5 - - - - Disabled - - "ETHERC0: EXOUT; ETHERC0: EXOUT; GPT3: GTIOCB; PDC0: PIXD6; RTC0: RTCIC2; SDHI1: DAT6; SSI0: SSIWS" - None - - 
-      P405 6 - - - - Disabled - - "ETHERC0: TX_EN; ETHERC0: TXD_EN; GPT1: GTIOCA; PDC0: PIXD5; SDHI1: DAT5; SSI0: SSITXD" - None - - 
+      P405 6 GPT1_GTIOCA - Low - "Peripheral mode" CMOS None "ETHERC0: TX_EN; ETHERC0: TXD_EN; GPT1: GTIOCA; PDC0: PIXD5; SDHI1: DAT5; SSI0: SSITXD" - IO - - 
       P406 7 - - - - Disabled - - "ETHERC0: RX_ER; ETHERC0: TXD1; GPT1: GTIOCB; PDC0: PIXD4; SDHI1: DAT4; SPI1: SSL3; SSI0: SSIRXD" - None - - 
       P407 36 USBFS0_VBUS - Low - "Peripheral mode" CMOS None "ADC0: ADTRG; AGT0: AGTIO; CTSU0: TS03; ETHERC0: EXOUT; ETHERC0: EXOUT; IIC0: SDA; RTC0: RTCOUT; SCI4: CTS_RTS_SS; SPI1: SSL3; USBFS0: VBUS" - IO - - 
       P408 35 - - - - Disabled - - "CTSU0: TS04; ETHERC0: CRS; ETHERC0: CRS_DV; GPT10: GTIOCB; IIC0: SCL; IRQ0: IRQ07; OPS0: GTOWLO; PDC0: PIXCLK; SCI3: RXD_MISO; SCI3: SCL; USBFS0: ID" - None - - 
@@ -190,7 +190,7 @@ FSP Configuration
       P613 88 - - - - Disabled - - "BUS0: D9_DQ9; SCI7: SDA; SCI7: TXD_MOSI" - None - - 
       P614 89 - - - - Disabled - - "BUS0: D10_DQ10; SCI7: RXD_MISO; SCI7: SCL" - None - - 
       P700 8 - - - - Disabled - - "ETHERC0: ETXD1; ETHERC0: TXD0; GPT5: GTIOCA; PDC0: PIXD3; SDHI1: DAT3; SPI1: MISO" - None - - 
-      P701 9 - - - - Disabled - - "ETHERC0: ETXD0; ETHERC0: REF50CK; GPT5: GTIOCB; PDC0: PIXD2; SDHI1: DAT2; SPI1: MOSI" - None - - 
+      P701 9 GPT5_GTIOCB - Low - "Peripheral mode" CMOS None "ETHERC0: ETXD0; ETHERC0: REF50CK; GPT5: GTIOCB; PDC0: PIXD2; SDHI1: DAT2; SPI1: MOSI" - IO - - 
       P702 10 - - - - Disabled - - "ETHERC0: ERXD1; ETHERC0: RXD0; GPT6: GTIOCA; PDC0: PIXD1; SDHI1: DAT1; SPI1: RSPCK" - None - - 
       P703 11 - - - - Disabled - - "CMP0: VCOUT; ETHERC0: ERXD0; ETHERC0: RXD1; GPT6: GTIOCB; PDC0: PIXD0; SDHI1: DAT0; SPI1: SSL0" - None - - 
       P704 12 - - - - Disabled - - "AGT0: AGTO; CAN0: CTX; ETHERC0: RX_CLK; ETHERC0: RX_ER; PDC0: HSYNC; SDHI1: CLK; SPI1: SSL1" - None - - 
@@ -263,7 +263,7 @@ FSP Configuration
       P110 75 DEBUG0_TDI - Low None "Peripheral mode" CMOS None "CAN1: CRX; CMP0: VCOUT; DEBUG0: TDI; GPT1: GTIOCB; IRQ0: IRQ03; OPS0: GTOVLO; SCI2: CTS_RTS_SS; SCI9: RXD_MISO; SCI9: SCL; SPI1: MISO" - IO - - 
       P111 76 - BOARD_ACTIVATE - None Disabled - None "BUS0: A05; GPT3: GTIOCA; IRQ0: IRQ04; SCI2: SCK; SCI9: SCK; SPI1: RSPCK" - IO - - 
       P112 77 - - - - Disabled - - "BUS0: A04; GPT3: GTIOCB; SCI1: SCK; SCI2: SDA; SCI2: TXD_MOSI; SPI1: SSL0; SSI0: SSISCK" - None - - 
-      P113 78 - GPT_OUTOUT_PIN Low - Disabled CMOS None "BUS0: A03; GPT2: GTIOCA; SCI2: RXD_MISO; SCI2: SCL; SSI0: SSIWS" - IO - - 
+      P113 78 - - Low - Disabled CMOS None "BUS0: A03; GPT2: GTIOCA; SCI2: RXD_MISO; SCI2: SCL; SSI0: SSIWS" - IO - - 
       P114 79 - - - - Disabled - - "BUS0: A02; GPT2: GTIOCB; SSI0: SSIRXD" - None - - 
       P115 80 - - - - Disabled - - "BUS0: A01; GPT4: GTIOCA; SSI0: SSITXD" - None - - 
       P200 57 - - - - Disabled - - "IRQ0: NMI" - None - - 
@@ -282,8 +282,8 @@ FSP Configuration
       P213 19 - - - - Disabled - - "ADC1: ADTRG; CGC0: XTAL; GPT0: GTIOCA; IRQ0: IRQ02; POEG2: GTETRG; SCI1: SDA; SCI1: TXD_MOSI" - None - - 
       P214 50 - - - - Disabled - - "ETHERC0: MDC; ETHERC0: MDC; OPS0: GTIU; QSPI0: QSPCLK; SDHI0: CLK; TRACE0: TCLK" - None - - 
       P300 72 DEBUG0_TCK - Low - "Peripheral mode" CMOS None "DEBUG0: SWCLK; DEBUG0: TCK; GPT0: GTIOCA; OPS0: GTOUUP; SPI1: SSL1" - IO - - 
-      P301 71 - - - - Disabled - - "AGT0: AGTIO; BUS0: A06; GPT4: GTIOCB; IRQ0: IRQ06; OPS0: GTOULO; SCI2: RXD_MISO; SCI2: SCL; SCI9: CTS_RTS_SS; SPI1: SSL2" - None - - 
-      P302 70 - - - - Disabled - - "BUS0: A07; GPT4: GTIOCA; IRQ0: IRQ05; OPS0: GTOUUP; SCI2: SDA; SCI2: TXD_MOSI; SPI1: SSL3" - None - - 
+      P301 71 - - Low None Disabled CMOS None "AGT0: AGTIO; BUS0: A06; GPT4: GTIOCB; IRQ0: IRQ06; OPS0: GTOULO; SCI2: RXD_MISO; SCI2: SCL; SCI9: CTS_RTS_SS; SPI1: SSL2" - IO - - 
+      P302 70 - - Low None Disabled CMOS None "BUS0: A07; GPT4: GTIOCA; IRQ0: IRQ05; OPS0: GTOUUP; SCI2: SDA; SCI2: TXD_MOSI; SPI1: SSL3" - IO - - 
       P303 69 - - - - Disabled - - "BUS0: A08; GPT7: GTIOCB" - None - - 
       P304 66 - - - - Disabled - - "BUS0: A09; GPT7: GTIOCA; IRQ0: IRQ09; OPS0: GTOWLO; SCI6: RXD_MISO; SCI6: SCL" - None - - 
       P305 65 - - - - Disabled - - "BUS0: A10; IRQ0: IRQ08; OPS0: GTOWUP; QSPI0: QSPCLK; SCI6: SDA; SCI6: TXD_MOSI" - None - - 
@@ -300,7 +300,7 @@ FSP Configuration
       P402 3 - - Low None Disabled CMOS None "AGT0: AGTIO; AGT1: AGTIO; CAC0: CACREF; CAN0: CRX; ETHERC0: MDIO; ETHERC0: MDIO; IRQ0: IRQ04; PDC0: VSYNC; RTC0: RTCIC0; SCI7: RXD_MISO; SCI7: SCL; SSI: AUDIO_CLK" - IO - - 
       P403 4 - - - - Disabled - - "AGT0: AGTIO; AGT1: AGTIO; ETHERC0: LINKSTA; ETHERC0: LINKSTA; GPT3: GTIOCA; PDC0: PIXD7; RTC0: RTCIC1; SCI7: CTS_RTS_SS; SDHI1: DAT7; SSI0: SSISCK" - None - - 
       P404 5 - - - - Disabled - - "ETHERC0: EXOUT; ETHERC0: EXOUT; GPT3: GTIOCB; PDC0: PIXD6; RTC0: RTCIC2; SDHI1: DAT6; SSI0: SSIWS" - None - - 
-      P405 6 - - - - Disabled - - "ETHERC0: TX_EN; ETHERC0: TXD_EN; GPT1: GTIOCA; PDC0: PIXD5; SDHI1: DAT5; SSI0: SSITXD" - None - - 
+      P405 6 - - Low - Disabled CMOS None "ETHERC0: TX_EN; ETHERC0: TXD_EN; GPT1: GTIOCA; PDC0: PIXD5; SDHI1: DAT5; SSI0: SSITXD" - IO - - 
       P406 7 - - - - Disabled - - "ETHERC0: RX_ER; ETHERC0: TXD1; GPT1: GTIOCB; PDC0: PIXD4; SDHI1: DAT4; SPI1: SSL3; SSI0: SSIRXD" - None - - 
       P407 36 - - Low - Disabled CMOS None "ADC0: ADTRG; AGT0: AGTIO; CTSU0: TS03; ETHERC0: EXOUT; ETHERC0: EXOUT; IIC0: SDA; RTC0: RTCOUT; SCI4: CTS_RTS_SS; SPI1: SSL3; USBFS0: VBUS" - IO - - 
       P408 35 - - - - Disabled - - "CTSU0: TS04; ETHERC0: CRS; ETHERC0: CRS_DV; GPT10: GTIOCB; IIC0: SCL; IRQ0: IRQ07; OPS0: GTOWLO; PDC0: PIXCLK; SCI3: RXD_MISO; SCI3: SCL; USBFS0: ID" - None - - 
@@ -335,7 +335,7 @@ FSP Configuration
       P613 88 - - - - Disabled - - "BUS0: D9_DQ9; SCI7: SDA; SCI7: TXD_MOSI" - None - - 
       P614 89 - - - - Disabled - - "BUS0: D10_DQ10; SCI7: RXD_MISO; SCI7: SCL" - None - - 
       P700 8 - - - - Disabled - - "ETHERC0: ETXD1; ETHERC0: TXD0; GPT5: GTIOCA; PDC0: PIXD3; SDHI1: DAT3; SPI1: MISO" - None - - 
-      P701 9 - - - - Disabled - - "ETHERC0: ETXD0; ETHERC0: REF50CK; GPT5: GTIOCB; PDC0: PIXD2; SDHI1: DAT2; SPI1: MOSI" - None - - 
+      P701 9 - - Low - Disabled CMOS None "ETHERC0: ETXD0; ETHERC0: REF50CK; GPT5: GTIOCB; PDC0: PIXD2; SDHI1: DAT2; SPI1: MOSI" - IO - - 
       P702 10 - - - - Disabled - - "ETHERC0: ERXD1; ETHERC0: RXD0; GPT6: GTIOCA; PDC0: PIXD1; SDHI1: DAT1; SPI1: RSPCK" - None - - 
       P703 11 - - - - Disabled - - "CMP0: VCOUT; ETHERC0: ERXD0; ETHERC0: RXD1; GPT6: GTIOCB; PDC0: PIXD0; SDHI1: DAT0; SPI1: SSL0" - None - - 
       P704 12 - - - - Disabled - - "AGT0: AGTO; CAN0: CTX; ETHERC0: RX_CLK; ETHERC0: RX_ER; PDC0: HSYNC; SDHI1: CLK; SPI1: SSL1" - None - - 
@@ -388,18 +388,18 @@ FSP Configuration
   Module "I/O Port (r_ioport)"
     Parameter Checking: Default (BSP)
     
+  Module "Timer, General PWM (r_gpt)"
+    Parameter Checking: Default (BSP)
+    Pin Output Support: Enabled
+    Write Protect Enable: Disabled
+    Clock Source: PCLKD
+    
   Module "UART (r_sci_uart)"
     Parameter Checking: Default (BSP)
     FIFO Support: Disable
     DTC Support: Disable
     Flow Control Support: Disable
     RS-485 Support: Enable
-    
-  Module "Timer, General PWM (r_gpt)"
-    Parameter Checking: Default (BSP)
-    Pin Output Support: Enabled
-    Write Protect Enable: Disabled
-    Clock Source: PCLKD
     
   HAL
     Instance "g_ioport I/O Port (r_ioport)"
@@ -409,32 +409,6 @@ FSP Configuration
       3rd Port ELC Trigger Source: Disabled
       4th Port ELC Trigger Source: Disabled
       Pin Configuration Name: g_bsp_pin_cfg
-      
-    Instance "g_uart0 UART (r_sci_uart)"
-      General: Name: g_uart0
-      General: Channel: 0
-      General: Data Bits: 8bits
-      General: Parity: None
-      General: Stop Bits: 1bit
-      Baud: Baud Rate: 9600
-      Baud: Baud Rate Modulation: Disabled
-      Baud: Max Error (%): 5
-      Flow Control: CTS/RTS Selection: Hardware RTS
-      Flow Control: Software RTS Port: Disabled
-      Flow Control: Software RTS Pin: Disabled
-      Extra: Clock Source: Internal Clock
-      Extra: Start bit detection: Falling Edge
-      Extra: Noise Filter: Enable
-      Extra: Receive FIFO Trigger Level: Max
-      Extra: RS-485: DE Pin: Enable
-      Extra: RS-485: DE Pin Polarity: Active High
-      Extra: RS-485: DE Port Number: 03
-      Extra: RS-485: DE Pin Number: 10
-      Interrupts: Callback: uart_callback
-      Interrupts: Receive Interrupt Priority: Priority 12
-      Interrupts: Transmit Data Empty Interrupt Priority: Priority 12
-      Interrupts: Transmit End Interrupt Priority: Priority 12
-      Interrupts: Error Interrupt Priority: Priority 12
       
     Instance "g_timer0 Timer, General PWM (r_gpt)"
       General: Name: g_timer0
@@ -483,4 +457,78 @@ FSP Configuration
       Extra Features: Interrupt Skipping (Channels with GTITC only): Skip ADC Events: None
       Extra Features: Output Disable: GTIOCA Disable Setting: Disable Prohibited
       Extra Features: Output Disable: GTIOCB Disable Setting: Disable Prohibited
+      
+    Instance "g_timer1 Timer, General PWM (r_gpt)"
+      General: Name: g_timer1
+      General: Channel: 5
+      General: Mode: Periodic
+      General: Period: 500
+      General: Period Unit: Milliseconds
+      Output: Custom Waveform: GTIOA: Initial Output Level: Pin Level Low
+      Output: Custom Waveform: GTIOA: Cycle End Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOA: Compare Match Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOA: Retain Output Level at Count Stop: Disabled
+      Output: Custom Waveform: GTIOB: Initial Output Level: Pin Level Low
+      Output: Custom Waveform: GTIOB: Cycle End Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOB: Compare Match Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOB: Retain Output Level at Count Stop: Disabled
+      Output: Custom Waveform: Custom Waveform Enable: Disabled
+      Output: Duty Cycle Percent (only applicable in PWM mode): 50
+      Output: GTIOCA Output Enabled: False
+      Output: GTIOCA Stop Level: Pin Level Low
+      Output: GTIOCB Output Enabled: True
+      Output: GTIOCB Stop Level: Pin Level Low
+      Input: Count Up Source: 
+      Input: Count Down Source: 
+      Input: Start Source: 
+      Input: Stop Source: 
+      Input: Clear Source: 
+      Input: Capture A Source: 
+      Input: Capture B Source: 
+      Input: Noise Filter A Sampling Clock Select: No Filter
+      Input: Noise Filter B Sampling Clock Select: No Filter
+      Interrupts: Callback: NULL
+      Interrupts: Overflow/Crest Interrupt Priority: Disabled
+      Interrupts: Capture A Interrupt Priority: Disabled
+      Interrupts: Capture B Interrupt Priority: Disabled
+      Interrupts: Underflow/Trough Interrupt Priority: Disabled
+      Extra Features: Extra Features: Disabled
+      Extra Features: Output Disable: POEG Link: POEG Channel 0
+      Extra Features: Output Disable: Output Disable POEG Trigger: 
+      Extra Features: ADC Trigger: Start Event Trigger (Channels with GTINTAD only): 
+      Extra Features: Dead Time: Dead Time Count Up (Raw Counts): 0
+      Extra Features: Dead Time: Dead Time Count Down (Raw Counts) (Channels with GTDVD only): 0
+      Extra Features: ADC Trigger (Channels with GTADTRA only): ADC A Compare Match (Raw Counts): 0
+      Extra Features: ADC Trigger (Channels with GTADTRB only): ADC B Compare Match (Raw Counts): 0
+      Extra Features: Interrupt Skipping (Channels with GTITC only): Interrupt to Count: None
+      Extra Features: Interrupt Skipping (Channels with GTITC only): Interrupt Skip Count: 0
+      Extra Features: Interrupt Skipping (Channels with GTITC only): Skip ADC Events: None
+      Extra Features: Output Disable: GTIOCA Disable Setting: Disable Prohibited
+      Extra Features: Output Disable: GTIOCB Disable Setting: Disable Prohibited
+      
+    Instance "g_uart0 UART (r_sci_uart)"
+      General: Name: g_uart0
+      General: Channel: 0
+      General: Data Bits: 8bits
+      General: Parity: None
+      General: Stop Bits: 1bit
+      Baud: Baud Rate: 115200
+      Baud: Baud Rate Modulation: Disabled
+      Baud: Max Error (%): 5
+      Flow Control: CTS/RTS Selection: Hardware RTS
+      Flow Control: Software RTS Port: Disabled
+      Flow Control: Software RTS Pin: Disabled
+      Extra: Clock Source: Internal Clock
+      Extra: Start bit detection: Falling Edge
+      Extra: Noise Filter: Disable
+      Extra: Receive FIFO Trigger Level: Max
+      Extra: RS-485: DE Pin: Enable
+      Extra: RS-485: DE Pin Polarity: Active High
+      Extra: RS-485: DE Port Number: 03
+      Extra: RS-485: DE Pin Number: 10
+      Interrupts: Callback: uart_callback
+      Interrupts: Receive Interrupt Priority: Priority 12
+      Interrupts: Transmit Data Empty Interrupt Priority: Priority 12
+      Interrupts: Transmit End Interrupt Priority: Priority 12
+      Interrupts: Error Interrupt Priority: Priority 12
       

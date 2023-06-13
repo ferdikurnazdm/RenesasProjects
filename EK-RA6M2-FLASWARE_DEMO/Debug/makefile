@@ -82,32 +82,32 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 SECONDARY_FLASH += \
-FALSHWARE_DENEME_002.srec \
+FLASHWARE_DENEME_003.srec \
 
 SECONDARY_SIZE += \
-FALSHWARE_DENEME_002.siz \
+FLASHWARE_DENEME_003.siz \
 
 
 # All Target
-all: FALSHWARE_DENEME_002.elf secondary-outputs
+all: FLASHWARE_DENEME_003.elf secondary-outputs
 
 # Tool invocations
-FALSHWARE_DENEME_002.elf: $(OBJS) $(USER_OBJS) $(LINKER_SCRIPT)
-	$(file > FALSHWARE_DENEME_002.elf.in,-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g -gdwarf-4 -T "fsp.ld" -Xlinker --gc-sections -L "C:\\Users\\ferdi.kurnaz\\e2_studio\\workspace\\FALSHWARE_DENEME_002/script" -Wl,-Map,"FALSHWARE_DENEME_002.map" --specs=nano.specs --specs=rdimon.specs -o "FALSHWARE_DENEME_002.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
-	@echo Building target: $@ && arm-none-eabi-gcc @"FALSHWARE_DENEME_002.elf.in"
+FLASHWARE_DENEME_003.elf: $(OBJS) $(USER_OBJS) $(LINKER_SCRIPT)
+	$(file > FLASHWARE_DENEME_003.elf.in,-mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O2 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wunused -Wuninitialized -Wall -Wextra -Wmissing-declarations -Wconversion -Wpointer-arith -Wshadow -Wlogical-op -Waggregate-return -Wfloat-equal  -g -gdwarf-4 -T "fsp.ld" -Xlinker --gc-sections -L "D:\\Users\\ferdi.kurnaz\\e2_studio\\workspace\\FLASHWARE_DENEME_003/script" -Wl,-Map,"FLASHWARE_DENEME_003.map" --specs=nano.specs --specs=rdimon.specs -o "FLASHWARE_DENEME_003.elf" -Wl,--start-group $(OBJS) $(USER_OBJS) $(LIBS) -Wl,--end-group)
+	@echo Building target: $@ && arm-none-eabi-gcc @"FLASHWARE_DENEME_003.elf.in"
 
-FALSHWARE_DENEME_002.srec: FALSHWARE_DENEME_002.elf
-	arm-none-eabi-objcopy -O srec "FALSHWARE_DENEME_002.elf"  "FALSHWARE_DENEME_002.srec"
+FLASHWARE_DENEME_003.srec: FLASHWARE_DENEME_003.elf
+	arm-none-eabi-objcopy -O srec "FLASHWARE_DENEME_003.elf"  "FLASHWARE_DENEME_003.srec"
 
-FALSHWARE_DENEME_002.siz: FALSHWARE_DENEME_002.elf
-	arm-none-eabi-size --format=berkeley "FALSHWARE_DENEME_002.elf"
+FLASHWARE_DENEME_003.siz: FLASHWARE_DENEME_003.elf
+	arm-none-eabi-size --format=berkeley "FLASHWARE_DENEME_003.elf"
 
 # Other Targets
 clean:
 	-$(file > clean_file.tmp,  $(JMP_DEPS)  $(FSY_DEPS)  $(C_UPPER_DEPS)  $(SECONDARY_SIZE)  $(SRC_UPPER_DEPS)  $(P_UPPER_DEPS)  $(S_DEPS)  $(PP_UPPER_DEPS)  $(P_DEPS)  $(FSY_UPPER_DEPS)  $(C_DEPS)  $(SRC_DEPS)  $(JMP_UPPER_DEPS)  $(PP_DEPS)  $(ASM_UPPER_DEPS)  $(SX_DEPS)  $(SX_UPPER_DEPS)  $(OBJS)  $(SECONDARY_FLASH)  $(ASM_DEPS)  $(SREC)  $(S_UPPER_DEPS)  $(MAP) )
 	-@ xargs -P 2 -s 32000 -t -a clean_file.tmp $(RM)
 	-@$(RM) clean_file.tmp
-	-$(RM)  FALSHWARE_DENEME_002.elf
+	-$(RM)  FLASHWARE_DENEME_003.elf
 	-@echo ' '
 
 secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_SIZE)
